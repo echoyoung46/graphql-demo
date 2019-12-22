@@ -1,0 +1,17 @@
+{
+  "name": "graphql-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node bin/run.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "apollo-server-koa": "^2.9.14",
+    "config": "^3.2.4",
+    "graphql": "^14.5.8",
+    "koa": "^2.11.0",
+    "mongoose": "^5.8.2"
+  }
+}
