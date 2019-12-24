@@ -2,36 +2,13 @@ const Koa = require('koa');
 const {
 	ApolloServer,
 	gql
-} = require('apollo-server-koa');
+} = require('apollo-server-koa')
+const db = require('./lib/service/db')
 
-const books = [{
-		title: 'Harry Potter and the Chamber of Secrets',
-		author: 'J.K. Rowling',
-	},
-	{
-		title: 'Jurassic Park',
-		author: 'Michael Crichton',
-	},
-];
+const typeDefs = gql(require('./lib/graphql/typeDefs'))
+const resolvers = require('./lib/graphql/resolvers')
 
-const typeDefs = gql `
-  type Book {
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
-
-const resolvers = {
-	Query: {
-		books: () => books,
-	},
-};
-
-const app = new Koa()
+const app = new Koa();
 const server = new ApolloServer({
 	typeDefs,
 	resolvers
@@ -43,6 +20,7 @@ server.applyMiddleware({
 
 module.exports = {
 	run: async (port) => {
+		await db.connect()
 		await app.listen(port)
 		console.log(`Server Listening ${port}`)
 	},

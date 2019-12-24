@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 let schema = mongoose.Schema({
-	name: String,
+	title: String,
 	author: String,
 	roomId: ObjectId,
 
@@ -14,5 +14,6 @@ let schema = mongoose.Schema({
 	createdBy: ObjectId,
 	updatedBy: ObjectId
 });
-
+console.log(123);
+console.log(mongoose.model('book', schema));
 module.exports = mongoose.model('book', schema);

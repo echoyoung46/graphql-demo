@@ -12,9 +12,14 @@ module.exports = {
 async function connect() {
 	try {
 		let ret = await mongoose.connect(DB_URL, {
+			useUnifiedTopology: true,
 			useNewUrlParser: true
 		})
+		console.log(DB_URL);
+		console.log(111111);
 	} catch (e) {
-
+		console.log('connect error');
+		console.log(DB_URL);
+		console.log(e);
 	}
 }
